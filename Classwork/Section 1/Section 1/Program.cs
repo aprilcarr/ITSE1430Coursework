@@ -10,13 +10,21 @@ namespace Section_1
     {
         static void Main( string[] args )
         {
-            //DisplayMenu();
-            PlayWithStrings();
+            bool notQuit;
+            do
+            {
+               notQuit = DisplayMenu();
+            } while (notQuit);
+                           
+                
+                
+                
+            //PlayWithStrings();
         }
 
         private static void PlayWithStrings()
         {
-            
+
             string hoursString = "10A";
             // int hours = Int32.Parse(hoursString);//must be proper primitive
             //int hours;
@@ -39,47 +47,107 @@ namespace Section_1
             string firstName = "Bob";
             string lastName = "Smith";
             string name = firstName + " " + lastName;
+
+            // strings are immutable - this produces a new string
+            name = "Hello" + name;
+            Console.WriteLine("hello" + name);//just want to print it to the console - 6 max per program when using +  Approach 1
+            Console.WriteLine("Hello {0} {1}", firstName, lastName); //alternative to +.  No maximum. approach 2
+            string str = String.Format("Hello {0} {1}, firstName, lastName");  // approach 3
+            Console.WriteLine(str);
+
+            //Approach 4
+            Console.WriteLine($"Hello {firstName} {lastName}");//interpreted string - language limitations compiler will tell you, stick with identifiers and integers
+                                                               //String is more readable, can't screw it up?, 
+
+            //Null vs empty
+            string missing = null;
+            string empty = " ";
+            string empty2 = String.Empty;
+
+            //Checking for empty strings
+            //if (firstName.Length ==0)
+            if (firstName != null && firstName != "")
+                Console.WriteLine(firstName);
+
+            //Preferred checking for empty strings
+            if (!String.IsNullOrEmpty(firstName))
+                Console.WriteLine(firstName);
+
+            //Other stuff
+            string upperName = firstName.ToUpper();
+            string lowerName = firstName.ToLower();
+
+            //string comparison
+            bool areEqual = firstName == lastName; //case matters
+            areEqual = firstName.ToLower() == lastName.ToLower(); //use ToLower if culture is a concern
+            areEqual = String.Compare(firstName, lastName) == 0; // return type int.  if it returns a 0 it is true. less than 0 means left is greater than right etc
+            areEqual = String.Compare(firstName, lastName, true) == 0; // case insensitive 
+
+            bool startsWithA = firstName.StartsWith("A");
+            bool endsWithA = firstName.EndsWith("A");
+            bool hasA = firstName.IndexOf("A") >= 0;
+            string subset = firstName.Substring(4);
+
+            //Clean up functions
+            string cleanMe = firstName.Trim(); //removes whitespace on either end- also - TrimStart, TrimEnd
+            string makeLonger = firstName.PadLeft(20); //PadRight 
+
         }
 
-        private static void DisplayMenu()
+
+        private static bool DisplayMenu()
         {
-            Console.WriteLine("A)dd Movie");
-            Console.WriteLine("E)dit Movie");
-            Console.WriteLine("D)elete Movie");
-            Console.WriteLine("V)iew Movies");
-            Console.WriteLine("Q)uit");
-
-            string input = Console.ReadLine();
-            switch (input[0])//(input[0]) searches for a character in a string - strings are not arrays in C#
+            while (true)
             {
-                case 'A': AddMovie(); break; //required in C# - every case statement requires a break 
-                case 'E': EditMovie(); break;
-                case 'D': DeleteMovie(); break;
-                case 'V': ViewMovies(); break;
-                case 'Q':; break;
+                Console.WriteLine("A)dd Movie");
+                Console.WriteLine("E)dit Movie");
+                Console.WriteLine("D)elete Movie");
+                Console.WriteLine("V)iew Movies");
+                Console.WriteLine("Q)uit");
 
-                default: Console.WriteLine("Please enter a valid value."); break;
+                string input = Console.ReadLine();
+                switch (input[0])//(input[0]) searches for a character in a string - strings are not arrays in C#
+                {
+                    case 'a':
+                    case 'A': AddMovie(); return true;
+
+                    case 'e':
+                    case 'E': EditMovie(); return true;
+
+                    case 'd':
+                    case 'D': DeleteMovie(); return true;
+
+                    case 'v':
+                    case 'V': ViewMovies(); return true;
+
+                    case 'q':
+                    case 'Q': return false;
+
+                    default:
+                    Console.WriteLine("Please enter a valid value.");
+                    break; //required in C# - every case statement requires a break or return from expression - *one case of fall through - empty case statement
+                };
             };
         }
 
         private static void AddMovie()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("DeleteMovie");
         }
 
         private static void EditMovie()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("EditMovie");
         }
 
         private static void ViewMovies()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("ViewMovies");
         }
 
         private static void DeleteMovie()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("DeleteMovie");
         }
     }
 }
