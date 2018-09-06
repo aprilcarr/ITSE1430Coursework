@@ -13,13 +13,30 @@ namespace Section_1
             bool notQuit;
             do
             {
-               notQuit = DisplayMenu();
+                notQuit = DisplayMenu();
             } while (notQuit);
-                           
-                
-                
-                
-            //PlayWithStrings();
+
+        }
+        private static void playWithArrays()
+        {
+            Console.WriteLine("How may names? ");
+
+            int count = ReadInt32("How many names? ", 1);
+            string[] names = new string[count];
+            for (int index = 0; index < count; ++index)
+            {
+                Console.WriteLine("name? ");
+                names[index] = Console.ReadLine();
+            };
+            foreach (string name in names)
+            //for (int index = 0; index < names.Length; ++index)  //changed from count to names.Length - line is used a lot - foreach accomplishes the same thing as the for loop
+            //no bound checking- Not exactly equivalent to for loop- if you need to start in the middle or stop early foreach will not work.
+            {
+                string str = name; //readonly not allowed 
+                str = "";
+                //Console.WriteLine(names[index]);
+                Console.WriteLine(name);
+            };
         }
 
         private static void PlayWithStrings()
@@ -40,7 +57,7 @@ namespace Section_1
 
             string message = "Hello\tworld";
             string filePath = @"C:\\Temp\\Test"; // \\maps to one character = used to make filepath valid
-            //verbatim strings
+                                                 //verbatim strings
             filePath = @"C:\\Temp\\Test";
 
             //Concat
@@ -62,7 +79,7 @@ namespace Section_1
             //Null vs empty
             string missing = null;
             string empty = " ";
-            string empty2 = String.Empty;
+            string empty2 = String.Empty; //test for empty string
 
             //Checking for empty strings
             //if (firstName.Length ==0)
@@ -91,8 +108,8 @@ namespace Section_1
             //Clean up functions
             string cleanMe = firstName.Trim(); //removes whitespace on either end- also - TrimStart, TrimEnd
             string makeLonger = firstName.PadLeft(20); //PadRight 
-
         }
+
 
 
         private static bool DisplayMenu()
@@ -109,30 +126,49 @@ namespace Section_1
                 switch (input[0])//(input[0]) searches for a character in a string - strings are not arrays in C#
                 {
                     case 'a':
-                    case 'A': AddMovie(); return true;
+                    case 'A':
+                    AddMovie();
+                    return true;
 
                     case 'e':
-                    case 'E': EditMovie(); return true;
+                    case 'E':
+                    EditMovie();
+                    return true;
 
                     case 'd':
-                    case 'D': DeleteMovie(); return true;
+                    case 'D':
+                    DeleteMovie();
+                    return true;
 
                     case 'v':
-                    case 'V': ViewMovies(); return true;
+                    case 'V':
+                    ViewMovies();
+                    return true;
 
                     case 'q':
-                    case 'Q': return false;
+                    case 'Q':
+                    return false;
 
                     default:
                     Console.WriteLine("Please enter a valid value.");
                     break; //required in C# - every case statement requires a break or return from expression - *one case of fall through - empty case statement
+
+                    //console.writeline (names[0]);
+                    //names [G] = "Bob";
+                    //arrays have fixed size  //string [] names = new string [10];
+                    //open array - "I accept an array"
+                    //call stack 
+                    //arrays do not have to have a size at runtime
                 };
             };
         }
 
         private static void AddMovie()
         {
-            Console.WriteLine("DeleteMovie");
+            string name = ReadString("Enter a name: ", true);
+            description = ReadString("Enter a description:  ");
+            runLength = ReadInt32("Enter ren length (in minutes):  ", 0);
+            Console.WriteLine("AddMovie");
         }
 
         private static void EditMovie()
@@ -149,5 +185,50 @@ namespace Section_1
         {
             Console.WriteLine("DeleteMovie");
         }
-    }
+
+        private static int ReadInt32( string message, int minValue )
+        {
+            while (true)
+            {
+                Console.WriteLine(message);
+                string input = Console.ReadLine();
+
+                if (Int32.TryParse(input, out int result))
+                {
+                    if (result >= minValue)
+                        return result;
+                };
+                Console.WriteLine($"You must enter an interger value >= {minValue}");
+            };
+
+
+        }
+
+        private static string ReadString( string message )
+        {
+                return ReadString(message, false);
+                
+            }
+
+            private static string ReadString( string message, bool required )
+        {
+            while (true)
+            {
+
+                Console.WriteLine(message);
+                string input = Console.ReadLine();
+
+                if (!String.IsNullOrEmpty(input) || !required)
+                    return input;
+                Console.WriteLine("You must enter a value");
+            };
+        }
+
+
+        //can declare variables you need to share across functions
+        static string name; //A movie
+        static string description;
+        static int runLength;
+        //static DateTime releasedate;
+}
 }
