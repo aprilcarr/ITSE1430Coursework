@@ -24,5 +24,16 @@ namespace ITSE1430.MovieLib.UI
 
             Close();
         }
+        
+
+        private void helpToolStripMenuItem_Click( object sender, EventArgs e )
+        {
+
+        }
+
+        private void OnHelpAbout( object sender, EventArgs e )
+        {
+            MessageBox.Show(this,"Sorry", "Help", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
     }
 }
