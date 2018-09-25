@@ -80,19 +80,20 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addToolStripMenuItem.Text = "Add";
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.OnMovieAdd);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             // 
             // helpToolStripMenuItem
@@ -108,7 +109,7 @@
             // 
             this._miHelpAbout.Name = "_miHelpAbout";
             this._miHelpAbout.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this._miHelpAbout.Size = new System.Drawing.Size(152, 22);
+            this._miHelpAbout.Size = new System.Drawing.Size(126, 22);
             this._miHelpAbout.Text = "About";
             this._miHelpAbout.Click += new System.EventHandler(this.OnHelpAbout);
             // 

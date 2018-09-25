@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace ITSE1430MovieLib
 {
-    class Movie
+    public class Movie
     {
         public string Name;
         //public System.String Name;
+
+        public string Description;
+
+        public int ReleaseYear;
+        public int runlength;
 
     }
 }
