@@ -13,10 +13,12 @@ namespace ITSE1430.MovieLib.UI
 {
     public partial class MovieForm : Form
     {
-        public MovieForm()
+        public MovieForm()      
+
         {
             InitializeComponent();
         }
+        public Movie Movie;
 
         private void label3_Click( object sender, EventArgs e )
         {
@@ -32,24 +34,27 @@ namespace ITSE1430.MovieLib.UI
         private void OnSave( object sender, EventArgs e )
         {
             var movie = new Movie();
+            var movie2 = new Movie();
+            var name = movie2.GetName();
 
             //Name is required
-            movie.Name = _txtName.Text;
+            movie.SetName(_txtName.Text);
             if (String.IsNullOrEmpty(_txtName.Text))
                 return;
 
             //Release year is numeric, if set
-            movie.ReleaseYear = GetInt32(_txtRelease);
-            if (movie.ReleaseYear < 0)
+            movie.SetReleaseYear(GetInt32(_txtRelease));
+            if (movie.GetReleaseYear() < 0)
                 return;
 
-            movie.Description = _txtdescription.Text;
+            movie.SetDescription(_txtdescription.Text);
 
             //Run length, if set
-            movie.runlength = GetInt32(_runLength);
-            if (movie.runlength < 0)
+            movie.SetRunLength( GetInt32(_runLength));
+            if (movie.GetRunlength() < 0)
                 return;
 
+            Movie = movie;
             DialogResult = DialogResult.OK;
             Close();
         }

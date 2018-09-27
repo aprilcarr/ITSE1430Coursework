@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ITSE1430MovieLib;
 
 namespace ITSE1430.MovieLib.UI
 {
@@ -42,7 +43,16 @@ namespace ITSE1430.MovieLib.UI
             if (form.ShowDialog(this) == DialogResult.Cancel)
                 return;
 
-            MessageBox.Show("Adding movie");
+            //MessageBox.Show("Adding movie");
+            //Movie = form.Movie;
+           // Movie.Name = "";
+        }
+
+        private Movie Movie;
+
+        private void MainForm_Load( object sender, EventArgs e )
+        {
+
         }
     }
 }
