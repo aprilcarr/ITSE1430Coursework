@@ -11,7 +11,7 @@ namespace PizzaCreator
         public class Order
         {
             public decimal Total { get; set; }
-            public List<string> Details { get; set; }
+            public List<string> Details = new List<string>();//{ get; set; }
             public bool IsDelivery { get; set; }
         }
 
@@ -21,11 +21,11 @@ namespace PizzaCreator
         {
             Program.CustomerOrder = new Order();
             
-           /* bool notQuit;
+           bool notQuit;
             do
             {
                 notQuit = DisplayMenu();
-            } while (notQuit);*/
+            } while (notQuit);
 
         }
 
@@ -39,6 +39,13 @@ namespace PizzaCreator
                 Console.WriteLine("Q)uit");
 
                 string input = Console.ReadLine();
+                //bool isValidInput = true;
+
+                if (input == "q" || input == "Q")
+                {
+                    return false;
+                }
+
 
                 if (input == "N" || input == "n")
                 {
@@ -51,83 +58,214 @@ namespace PizzaCreator
                     string size = Console.ReadLine();
                     if (size == "s" || size == "S")
                     {
-                        Program.CustomerOrder.Details.Add("Size - S");
+                        Program.CustomerOrder.Details.Add("Size is small. $5.00");
                         Program.CustomerOrder.Total += 5.00m;
 
-                        Console.WriteLine("Cart total is $5");
+                        Console.WriteLine("Cart total is " + CustomerOrder.Total);
                     }
-                    else  if (size == "m" || size == "M")
+
+                    else if (size == "m" || size == "M")
                     {
-                        Console.WriteLine("Cart total is $6.25");
+                        Program.CustomerOrder.Details.Add("Size is medium. $6.25");
+                        Program.CustomerOrder.Total += 6.25m;
+
+                        Console.WriteLine("Cart total is " + CustomerOrder.Total);
                     }
-                    else if (size == "l"  || size == "L")
+                    else if (size == "l" || size == "L")
                     {
-                        Console.WriteLine("Cart total is $8.75");
+                        Program.CustomerOrder.Details.Add("Size is large. $8.75");
+                        Program.CustomerOrder.Total += 8.75m;
+
+                        Console.WriteLine("Cart total is " + CustomerOrder.Total);
                     }
 
-                    Console.WriteLine("Meats (zero or more)  Each options is $0.75 extra");
-                    Console.WriteLine("b)acon");
-                    Console.WriteLine("h)am");
-                    Console.WriteLine("p)epperoni");
-                    Console.WriteLine("s)ausage");
-                    Console.WriteLine("           ");
-                    Console.WriteLine("Vegetables (zero or more)  Each options is $0.50 extra");
-                    Console.WriteLine("bl)ack olives");
-                    Console.WriteLine("mu)shrooms");
-                    Console.WriteLine("o)nions");
-                    Console.WriteLine("p)eppers");
-                    Console.WriteLine("            ");
-                    Console.WriteLine("Sauce (One is required");
-                    Console.WriteLine("t)raditional  $0");
-                    Console.WriteLine("g)arlic  $1");
-                    Console.WriteLine("or)egano  $1");
-                    Console.WriteLine("             ");
-                    Console.WriteLine("Cheese (One is required)");
-                    Console.WriteLine("r)egular $0");
-                    Console.WriteLine("e)xtra $1.25");
-                    Console.WriteLine("              ");
-                    Console.WriteLine("Delivery (One is required");
-                    Console.WriteLine("t)ake out $0");
-                    Console.WriteLine("d)elivery $2.25");
+                }
+
+                Console.WriteLine("Meats (zero or more)  Each options is $0.75 extra");
+
+                Console.WriteLine("Bacon?  Y or N");
+                string bacon = Console.ReadLine();
 
 
-                };
+                if (bacon == "Y" || bacon == "y")
+                {
+                    Program.CustomerOrder.Details.Add("Bacon + $.75");
+                    Program.CustomerOrder.Total += .75m;
 
-            }
-            /*switch (input[0])
+                    Console.WriteLine("Cart total is " + CustomerOrder.Total);
+                }
+
+
+                Console.WriteLine("Ham?  Y or N");
+                string ham = Console.ReadLine();
+                if (ham == "Y" || ham == "y")
+                {
+                    Program.CustomerOrder.Details.Add("Ham + $.75");
+                    Program.CustomerOrder.Total += .75m;
+
+                    Console.WriteLine("Cart total is " + CustomerOrder.Total);
+                }
+
+                Console.WriteLine("Pepperoni?  Y or N");
+                string pepperoni = Console.ReadLine();
+                if (pepperoni == "y" || pepperoni == "Y")
+                {
+                    Program.CustomerOrder.Details.Add("Pepperoni + $.75");
+                    Program.CustomerOrder.Total += .75m;
+
+                    Console.WriteLine("Cart total is " + CustomerOrder.Total);
+                }
+
+                Console.WriteLine("Sausage?  Y or N");
+                string sausage = Console.ReadLine();
+                if (sausage == "y" || sausage == "Y")
+                {
+                    Program.CustomerOrder.Details.Add("Sausage + $.75");
+                    Program.CustomerOrder.Total += .75m;
+
+                    Console.WriteLine("Cart total is " + CustomerOrder.Total);
+                }
+
+                Console.WriteLine("           ");
+
+                Console.WriteLine("Vegetables (zero or more)  Each options is $0.50 extra");
+
+                Console.WriteLine("Black olives?  Y or N");
+                string blackOlives = Console.ReadLine();
+                if (blackOlives == "y" || blackOlives == "Y")
+                {
+                    Program.CustomerOrder.Details.Add("Black olives + $.50");
+                    Program.CustomerOrder.Total += .50m;
+
+                    Console.WriteLine("Cart total is " + CustomerOrder.Total);
+                }
+
+                Console.WriteLine("Mushrooms? Y or N");
+                string mushrooms = Console.ReadLine();
+                if (mushrooms == "Y" || mushrooms == "y")
+                {
+                    Program.CustomerOrder.Details.Add("Mushrooms + $.50");
+                    Program.CustomerOrder.Total += .50m;
+
+                    Console.WriteLine("Cart total is " + CustomerOrder.Total);
+                }
+
+                Console.WriteLine("Onions?  Y or N");
+                string onion = Console.ReadLine();
+                if (onion == "Y" || onion == "y")
+                {
+                    Program.CustomerOrder.Details.Add("Onion + $.50");
+                    Program.CustomerOrder.Total += .50m;
+
+                    Console.WriteLine("Cart total is " + CustomerOrder.Total);
+                }
+
+                Console.WriteLine("Peppers?  Y or N");
+                string peppers = Console.ReadLine();
+                if (peppers == "Y" || peppers == "y")
+                {
+                    Program.CustomerOrder.Details.Add("Peppers + $.50");
+                    Program.CustomerOrder.Total += .50m;
+
+                    Console.WriteLine("Cart total is " + CustomerOrder.Total);
+                }
+
+                Console.WriteLine("            ");
+
+                Console.WriteLine("Sauce - T)raditional, G)arlic, or O)regano (limit 1)");
+
+                string sauce = Console.ReadLine();
+                if (sauce == "t" || sauce == "T")
+                {
+                    Program.CustomerOrder.Details.Add("Traditional sauce + $0");
+                    Program.CustomerOrder.Total += 0m;
+
+                    Console.WriteLine("Cart total is " + CustomerOrder.Total);
+                }
+                else if (sauce == "g" || sauce == "G")
+                {
+                    Program.CustomerOrder.Details.Add("Garlic sauce + $1");
+                    Program.CustomerOrder.Total += 1m;
+
+                    Console.WriteLine("Cart total is " + CustomerOrder.Total);
+                }
+                else if (sauce == "O" || sauce == "o")
+                {
+                    Program.CustomerOrder.Details.Add("Oregano sauce + $1");
+                    Program.CustomerOrder.Total += 1m;
+
+                    Console.WriteLine("Cart total is " + CustomerOrder.Total);
+                }
+                //else if (sauce == null)
+                //{
+                //    Console.WriteLine("Error.  Please choose a sauce.");
+                //}
+
+                Console.WriteLine("             ");
+
+                Console.WriteLine("Cheese- R)egular or E)xtra (One is required)");
+                string cheese = Console.ReadLine();
+                if (cheese == "R" || cheese == "r")
+                {
+                    Program.CustomerOrder.Details.Add("Regular cheese + $0");
+                    Program.CustomerOrder.Total += 0m;
+
+                    Console.WriteLine("Cart total is " + CustomerOrder.Total);
+                }
+                else if (cheese == "e" || cheese == "E")
+                {
+                    Program.CustomerOrder.Details.Add("Extra cheese + $1.25");
+                    Program.CustomerOrder.Total += 1.25m;
+
+                    Console.WriteLine("Cart total is " + CustomerOrder.Total);
+                }
+                //else if (cheese != "E" || cheese != "e" || cheese != "r" || cheese != "R")
+                //{
+                //    Console.WriteLine("Error.  Please choose an amount of cheese. R)egular E)xtra");
+                //    if (cheese == "R" || cheese == "r")
+                //    {
+                //        Program.CustomerOrder.Details.Add("cheese - r");
+                //        Program.CustomerOrder.Total += 0m;
+
+                //        Console.WriteLine("Cart total is " + CustomerOrder.Total);
+                //    }
+                //    else if (cheese == "e" || cheese == "E")
+                //    {
+                //        Program.CustomerOrder.Details.Add("cheese - e");
+                //        Program.CustomerOrder.Total += 1.25m;
+
+                //        Console.WriteLine("Cart total is " + CustomerOrder.Total);
+                //    }
+                //}
+                Console.WriteLine("              ");
+
+                Console.WriteLine("D)elivery or T)ake out? (One is required)");
+                string delivery = Console.ReadLine();
+                if (delivery == "D" || delivery == "d")
+                {
+                    Program.CustomerOrder.Details.Add("Delivery + $2.25");
+                    Program.CustomerOrder.Total += 2.25m;
+
+                    Console.WriteLine("Cart total is " + CustomerOrder.Total);
+                }
+                else if (delivery == "t" || delivery == "T")
+                {
+                    Program.CustomerOrder.Details.Add("Take Out + $0");
+                    Program.CustomerOrder.Total += 0m;
+
+                    Console.WriteLine("Cart total is " + CustomerOrder.Total);
+                }
+
+            
+
+            if (input == "d" || input == "D")
             {
-                case 'n':
-                case 'N':
-                    NewOrder();
-                    return true;
+                CustomerOrder.Details.ToList().ForEach(Console.WriteLine);
+            }
+            };
 
-                case 'm':
-                case 'M':
-                    ModifyOrder();
-                    return true;
-
-                case 'd':
-                case 'D':
-                    DisplayOrder();
-                    return true;
-
-                case 'q':
-                case 'Q':
-                    return false;
-
-
-            };*/
         }
-
-
-        /*private static void NewOrder()
-        {
-            string name = ReadString("Enter a name: ", true);
-            description = ReadString("Enter a description:  ");
-            runLength = ReadInt32("Enter ren length (in minutes):  ", 0);
-            Console.WriteLine("AddMovie");
-        }*/
-
+       
 
         private static int ReadInt32(string message, int minValue)
         {
