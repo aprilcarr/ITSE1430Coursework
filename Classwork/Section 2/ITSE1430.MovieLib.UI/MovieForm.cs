@@ -34,24 +34,25 @@ namespace ITSE1430.MovieLib.UI
         private void OnSave( object sender, EventArgs e )
         {
             var movie = new Movie();
-            var movie2 = new Movie();
-            var name = movie2.GetName();
+            //var movie2 = new Movie();
+            //var name = movie2.GetName();
 
             //Name is required
-            movie.SetName(_txtName.Text);
+            movie.Name = _txtName.Text;
             if (String.IsNullOrEmpty(_txtName.Text))
                 return;
 
             //Release year is numeric, if set
-            movie.SetReleaseYear(GetInt32(_txtRelease));
-            if (movie.GetReleaseYear() < 0)
+            movie.ReleaseYear = GetInt32(_txtRelease);
+            if (movie.ReleaseYear < 0)
                 return;
 
-            movie.SetDescription(_txtdescription.Text);
+            //movie.SetDescription(_txtdescription.Text);
+            movie.Description = _txtdescription.Text;
 
             //Run length, if set
-            movie.SetRunLength( GetInt32(_runLength));
-            if (movie.GetRunlength() < 0)
+            movie.RunLength =  GetInt32(_runLength);
+            if (movie.RunLength < 0)
                 return;
 
             Movie = movie;
