@@ -40,13 +40,11 @@ namespace PizzaCreator
                 Console.WriteLine("        ");
 
                 string input = Console.ReadLine();
-                //bool isValidInput = true;
-
+                
                 if (input == "q" || input == "Q")
                 {
                     return false;
                 }
-
 
                 if (input == "N" || input == "n")
                 {
@@ -55,7 +53,7 @@ namespace PizzaCreator
                     Console.WriteLine("M)edium $6.25");
                     Console.WriteLine("L)arge $8.75");
                     Console.WriteLine("          ");
-                    //Console.WriteLine("Cart total: ");
+                   
                     string size = Console.ReadLine();
                     if (size == "s" || size == "S")
                     {
@@ -86,23 +84,28 @@ namespace PizzaCreator
 
 
                     Console.WriteLine("Meats (zero or more)  Each options is $0.75 extra");
-
-
-                    Console.WriteLine("Bacon?  Y or N");
-                    string bacon = Console.ReadLine();
-                    if (bacon == "Y" || bacon == "y")
+                   
+                        Console.WriteLine("Bacon?  Y or N");
+                        string bacon = Console.ReadLine();
+                    do
                     {
-                        Program.CustomerOrder.Details.Add("Bacon                    + $0.75");
-                        Program.CustomerOrder.Total += .75m;
+                        if (bacon == "Y" || bacon == "y")
+                        {
+                            Program.CustomerOrder.Details.Add("Bacon                    + $0.75");
+                            Program.CustomerOrder.Total += .75m;
 
-                        Console.WriteLine("Cart total is $" + CustomerOrder.Total);
-                        Console.WriteLine("          ");
-                    }
-                    else if (bacon =="N" || bacon == "n")
-                    {
-                        Console.WriteLine("Cart total is $" + CustomerOrder.Total);
-                    }
+                            Console.WriteLine("Cart total is $" + CustomerOrder.Total);
+                            Console.WriteLine("          ");
 
+                        }
+                        if (bacon == "N" || bacon == "n")
+                        {
+                            Console.WriteLine("Cart total is $" + CustomerOrder.Total);
+
+                        }
+                    } while (bacon != "Y" && bacon != "y" && bacon != "N" && bacon != "n");
+                        { Console.WriteLine("Error. Please enter a valid selection."); };
+                        
 
                     Console.WriteLine("Ham?  Y or N");
                     string ham = Console.ReadLine();
