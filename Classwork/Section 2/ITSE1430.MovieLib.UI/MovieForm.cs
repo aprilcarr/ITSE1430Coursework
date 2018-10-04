@@ -18,7 +18,7 @@ namespace ITSE1430.MovieLib.UI
         {
             InitializeComponent();
         }
-        public Movie Movie;
+        public Movie Movie { get; set; }
 
         private void label3_Click( object sender, EventArgs e )
         {
@@ -55,6 +55,8 @@ namespace ITSE1430.MovieLib.UI
             if (movie.RunLength < 0)
                 return;
 
+            movie.IsOwned = _ownerCheckBox.Checked;
+
             Movie = movie;
             DialogResult = DialogResult.OK;
             Close();
@@ -68,6 +70,23 @@ namespace ITSE1430.MovieLib.UI
                 return value;
 
             return -1;
+        }
+
+        private void _ownerCheckBox_CheckedChanged( object sender, EventArgs e )
+        {
+
+        }
+
+        private void MovieForm_Load( object sender, EventArgs e )
+        {
+            if (Movie != null)
+            {
+                _txtName.Text = Movie.Name;
+                _txtdescription.Text = Movie.Description;
+                _txtRelease.Text = Movie.ReleaseYear.ToString();
+                _runLength.Text = Movie.RunLength.ToString();
+                _ownerCheckBox.Checked = Movie.IsOwned;
+            }
         }
     }
 }

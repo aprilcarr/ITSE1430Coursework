@@ -38,6 +38,7 @@
             this._runLength = new System.Windows.Forms.TextBox();
             this._buttonSave = new System.Windows.Forms.Button();
             this._buttonCancel = new System.Windows.Forms.Button();
+            this._ownerCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -76,7 +77,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 250);
+            this.label3.Location = new System.Drawing.Point(12, 266);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 13);
             this.label3.TabIndex = 4;
@@ -85,7 +86,7 @@
             // 
             // _txtRelease
             // 
-            this._txtRelease.Location = new System.Drawing.Point(81, 243);
+            this._txtRelease.Location = new System.Drawing.Point(81, 266);
             this._txtRelease.Name = "_txtRelease";
             this._txtRelease.Size = new System.Drawing.Size(195, 20);
             this._txtRelease.TabIndex = 5;
@@ -93,7 +94,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 278);
+            this.label4.Location = new System.Drawing.Point(12, 296);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 13);
             this.label4.TabIndex = 6;
@@ -101,7 +102,7 @@
             // 
             // _runLength
             // 
-            this._runLength.Location = new System.Drawing.Point(81, 275);
+            this._runLength.Location = new System.Drawing.Point(81, 296);
             this._runLength.Name = "_runLength";
             this._runLength.Size = new System.Drawing.Size(100, 20);
             this._runLength.TabIndex = 7;
@@ -126,12 +127,24 @@
             this._buttonCancel.UseVisualStyleBackColor = true;
             this._buttonCancel.Click += new System.EventHandler(this.OnCancel);
             // 
+            // _ownerCheckBox
+            // 
+            this._ownerCheckBox.AutoSize = true;
+            this._ownerCheckBox.Location = new System.Drawing.Point(81, 205);
+            this._ownerCheckBox.Name = "_ownerCheckBox";
+            this._ownerCheckBox.Size = new System.Drawing.Size(66, 17);
+            this._ownerCheckBox.TabIndex = 10;
+            this._ownerCheckBox.Text = "Owned?";
+            this._ownerCheckBox.UseVisualStyleBackColor = true;
+            this._ownerCheckBox.CheckedChanged += new System.EventHandler(this._ownerCheckBox_CheckedChanged);
+            // 
             // MovieForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(425, 350);
+            this.ClientSize = new System.Drawing.Size(425, 397);
             this.ControlBox = false;
+            this.Controls.Add(this._ownerCheckBox);
             this.Controls.Add(this._buttonCancel);
             this.Controls.Add(this._buttonSave);
             this.Controls.Add(this._runLength);
@@ -145,6 +158,7 @@
             this.Name = "MovieForm";
             this.ShowInTaskbar = false;
             this.Text = "MovieDetails";
+            this.Load += new System.EventHandler(this.MovieForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,5 +176,6 @@
         private System.Windows.Forms.TextBox _runLength;
         private System.Windows.Forms.Button _buttonSave;
         private System.Windows.Forms.Button _buttonCancel;
+        private System.Windows.Forms.CheckBox _ownerCheckBox;
     }
 }
